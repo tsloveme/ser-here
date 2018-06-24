@@ -1,0 +1,41 @@
+{
+  "name": "ser-here",
+  "version": "0.1.0",
+  "description": "Run static server here with mock data by json or mock.js",
+  "bin": {
+    "serhere": "./bin/serhere"
+  },
+  "keywords": [
+    "express",
+    "mock",
+    "json",
+    "Static",
+    "file",
+    "server",
+    "Assets"
+  ],
+  "author": "chen tang song",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "connect-history-api-fallback": "^1.2.0",
+    "debug": "^2.2.0",
+    "fs-extra": "^6.0.1",
+    "minimist": "^1.2.0",
+    "serve-index": "^1.9.1",
+    "serve-static": "^1.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tsloveme/ser-here.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tsloveme/ser-here/issues"
+  },
+  "homepage": "https://github.com/tsloveme/ser-here",
+  "files": [
+    "bin",
+    "keys"
+  ]
+}
