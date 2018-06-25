@@ -63,5 +63,35 @@
     <div id="box">
         
     </div>
+
+
+
+    <script type="text/javascript">
+        $(function(){
+            $('#btnAgent').on('click', function(){
+                $('#box1').empty();
+                getRemoteData();
+            });
+    
+            /**
+             * 获取远程代理数据
+            */
+            function getRemoteData(){
+                $.ajax({
+                    url:'/mockdata/user/search',
+                    type:'post',
+                    data:{delay:2000},
+                    success: function(data) {
+                        $('#box1').html('<pre>'+ JSON.stringify(data, false, 4) +'</pre>')
+                    },
+                });
+            };
+        })
+    </script>
+    <input type="button" id="btnAgent" value="get data: /mockdata/user/search" />  data actually from: https://www.easy-mock.com/mock/5aef20aefa30186ca1e99750/user/search
+    proxy:[
+    <div id="box1">
+        
+    </div>
 </body>
 </html>

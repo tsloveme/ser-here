@@ -1,6 +1,6 @@
 {
   "name": "ser-here",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Run static server here with mock data by json or mock.js",
   "bin": {
     "serhere": "./bin/serhere"
@@ -24,6 +24,7 @@
     "debug": "^2.2.0",
     "express": "^4.16.3",
     "fs-extra": "^6.0.1",
+    "http-proxy-middleware": "^0.18.0",
     "minimist": "^1.2.0",
     "serve-index": "^1.9.1",
     "serve-static": "^1.13.2"
