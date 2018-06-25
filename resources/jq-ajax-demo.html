@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jq-ajax-demo</title>
+    <script src="./libs/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+
+        $('#btn').on('click', function(){
+            $('#box').html('<div style="min-width:400px; height:50px; line-height:50px; text-align:center;">数据加载中...</div>');
+            getData();
+        });
+
+        /**
+         * 获取数据渲染列表
+        */
+        function getData(){
+            $.ajax({
+                url:'/api/user/list',
+                type:'post',
+                data:{delay:2000},
+                success: function(data) {
+                    if (data.success) {
+                        var htmlStr = '<table border="1" cellspacing="0" style="border-collase:collapse">'+
+                        '<tr><th>ID</th><th>name</th><th>gender</th><th>job</th></tr>';
+                        for(var i=0; i<data.data.length; i++) {
+                            var item = data.data[i];
+                            htmlStr += '<tr>';
+                            htmlStr += '<td>' + item.userid + '</td>';
+                            htmlStr += '<td>' + item.username + '</td>';
+                            if(item.gender == 'F') {
+                                    htmlStr += '<td>女</td>';
+                            } else if(item.gender == 'M') {
+                                    htmlStr += '<td>男</td>';
+                            } else {
+                                    htmlStr += '<td>未知</td>';
+                            }
+                            htmlStr += '<td>' + item.job + '</td>';
+                            htmlStr += '</tr>';
+                        }
+                        htmlStr += '</table>';
+                        $('#box').html(htmlStr);
+                    } else {
+                        var htmlStr = '<div>'+ ( data.replyText || '请求错误！') +'</div>';
+                        $('#box').html(htmlStr);
+                    }
+                },
+                error: function(err){
+                    $('#box').html(err.toString);
+                }
+            });
+        };
+    })
+    
+    
+    </script>
+</head>
+<body style="padding:20px;">
+    <input type="button" id="btn" value="发请求" />
+    <div id="box">
+        
+    </div>
+</body>
+</html>

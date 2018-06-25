@@ -2,8 +2,8 @@
 var successReturn = {
     success:true,
     data:[
-        {userid:1, username:'ts', position:'front end'},
-        {userid:2, username:'machale', position:'dancer'}
+        {userid:1, username:'cts', gender:'M', job:'front end'},
+        {userid:2, username:'lili', gender:'F', job:'dancer'}
     ]
 };
 

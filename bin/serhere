@@ -111,7 +111,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', mockData(argv.dir));
 app.use(serveStatic(argv.dir));
 app.use(serveIndex(argv.dir, { 'icons': true }));
-fsx.copy(path.resolve(__dirname, '../resources/data/'), path.resolve(argv.dir, './data'), {rewrite: false});
+fsx.copy(path.resolve(__dirname, '../resources/data/'), path.resolve(argv.dir, './data'), {overwrite: false});
+fsx.copy(path.resolve(__dirname, '../resources/libs/'), path.resolve(argv.dir, './libs'), {overwrite: false});
+fsx.copy(path.resolve(__dirname, '../resources/jq-ajax-demo.html'), path.resolve(argv.dir, './jq-ajax-demo.html'), {overwrite: false});
 
 // serhere 8888
 // serhere -p 8989
