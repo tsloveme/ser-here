@@ -60,6 +60,7 @@ module.exports = function(baseDir) {
             }, reqDelay);
         }
         if(suffix) return;
+		res.status(404);
         res.send({
             success:false,
             replyText:"没有找到假数据接口,请检查相关文件",
