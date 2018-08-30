@@ -10,20 +10,20 @@ Running static file server serhere and auto router to ther mock data(ajax). 随�
 Install it as a command line tool via `npm -g`.
 
 ```sh
-npm install serhere -g
+npm install ser-here -g
 ```
 
 ## Execution
 
 ```sh
 $ serhere
-// or with port
+// or with port 或者给它一个可用的端口
 $ serhere -p 8000
-// or start it but silent(don't open browser)
+// or start it but silent(don't open browser)  启动但不打开浏览器
 $ serhere -s
-// or with hostname
+// or with hostname 指定主机名
 $ serhere -h localhost -p 8888
-// or with folder
+// or with folder  指定启动的目录
 $ serhere -d ~/git/serhere
 // or enable html5 history
 $ serhere -f /index.html

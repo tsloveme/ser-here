@@ -1,6 +1,6 @@
 {
   "name": "ser-here",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Run static server here with mock data by json or mock.js",
   "bin": {
     "serhere": "./bin/serhere"
