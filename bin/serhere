@@ -29,8 +29,8 @@ var _arg = require("minimist")(process.argv.slice(2), {
     'dir': process.cwd()
   }
 });
-fsx.copySync(path.resolve(__dirname, '../resources/data/'), path.resolve(_arg.dir, './data'), {overwrite: false});
-var config = require(path.resolve(_arg.dir, './data/server.config.js'));
+fsx.copySync(path.resolve(__dirname, '../resources/server/'), path.resolve(_arg.dir, './server'), {overwrite: false});
+var config = require(path.resolve(_arg.dir, './server/server.config.js'));
 
 var argv = require("minimist")(process.argv.slice(2), {
   alias: {
@@ -125,10 +125,12 @@ config.proxy.forEach(item=>{
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', mockData(argv.dir));
+require('../utils/upload.js')(app, argv.dir);// 上传
 app.use(serveStatic(argv.dir));
 app.use(serveIndex(argv.dir, { 'icons': true }));
 fsx.copy(path.resolve(__dirname, '../resources/libs/'), path.resolve(argv.dir, './libs'), {overwrite: false});
 fsx.copy(path.resolve(__dirname, '../resources/jq-ajax-demo.html'), path.resolve(argv.dir, './jq-ajax-demo.html'), {overwrite: false});
+fsx.copy(path.resolve(__dirname, '../resources/upload-demo.html'), path.resolve(argv.dir, './upload-demo.html'), {overwrite: false});
 
 // serhere 8888
 // serhere -p 8989

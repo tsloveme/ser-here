@@ -22,7 +22,7 @@ module.exports = function(baseDir) {
         var suffix = "";
         var mockData;
 
-        var jsFilePath = path.join(baseDir, './data' + reqPath + '.js')
+        var jsFilePath = path.join(baseDir, './server/data' + reqPath + '.js')
         if(fs.existsSync(jsFilePath)){
             delete require.cache[jsFilePath];
             mockData = require(jsFilePath);
