@@ -1,13 +1,13 @@
 var path = require('path');
 var fs = require('fs');
 const fileUpload = require('express-fileupload');
+var fsx = require('fs-extra');
 
 module.exports = function(app, dir){
     // default options
     app.use(fileUpload());
 
     app.post('/upload', function(req, res) {
-        console.log(1111111111111111111);
         if (!req.files) {
             return res.status(400).send('No files were uploaded.');
         }
@@ -36,11 +36,7 @@ module.exports = function(app, dir){
             //console.log();
             
         } while(stat);
-        try {
-            fs.stat(path.resolve(dir, './server/uploadFile'))
-        } catch (e) {
-            fs.mkdirSync(path.resolve(dir, './server/uploadFile'));
-        }
+        fsx.ensureDirSync(path.resolve(dir, './server/uploadFile'))
         sampleFile.mv(path.resolve(dir, './server/uploadFile/' + fileName + fileType), function(err) {
             if (err)
             return res.status(500).send(err);
